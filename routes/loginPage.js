@@ -4,11 +4,6 @@ module.exports = (req, res, next) => {
     username === process.env.USER_NAME.toString().trim() &&
     password === process.env.PASSWORD.toString().trim()
   ) {
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
     res.cookie("username", "kemal", {
       expires: new Date(Date.now() + 900000),
       httpOnly: true,
