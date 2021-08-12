@@ -1,6 +1,16 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 require("dotenv").config();
+
+const app = express();
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
+app.use(cookieParser());
 
 const db = require("./config/db");
 const error = require("./middlewares/error");
@@ -12,8 +22,6 @@ const catRouter = require("./routes/cat");
 const publishersRouter = require("./routes/publishers");
 const loginPage = require("./routes/loginPage");
 
-const app = express();
-app.use(cookieParser());
 db(); //db bağlantı ayarları
 app.use(express.json()); //req.body içindeki json değerleri alır.
 
