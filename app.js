@@ -4,7 +4,13 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+    allowedHeaders: ["Origin, X-Requested-With, Content-Type, Accept"],
+  })
+);
 app.use(cookieParser());
 
 const db = require("./config/db");
